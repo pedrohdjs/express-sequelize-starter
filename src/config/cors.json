@@ -1,0 +1,11 @@
+{
+    "development":{
+        "origin": "http://localhost:3001"
+    },
+    "production":{
+        "origin": "http://localhost:3001"
+    },
+    "test":{
+        "origin": "http://localhost:3001"
+    }
+}

@@ -1,0 +1,32 @@
+{
+	"development": {
+		"dialect": "sqlite",
+		"storage": "sqlite/db.sqlite",
+		"pool": {
+			"max": 5,
+			"min": 0,
+			"acquire": 30000,
+			"idle": 10000
+		}
+	},
+	"production": {
+		"dialect": "sqlite",
+		"storage": "sqlite/db.sqlite",
+		"pool": {
+			"max": 5,
+			"min": 0,
+			"acquire": 30000,
+			"idle": 10000
+		}
+	},
+	"test": {
+		"dialect": "sqlite",
+		"storage": "sqlite/db.sqlite",
+		"pool": {
+			"max": 5,
+			"min": 0,
+			"acquire": 30000,
+			"idle": 10000
+		}
+	}
+}
