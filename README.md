@@ -12,7 +12,7 @@ A Node.js template repo for RESTful backend services built with Express.js and S
 # Usage
 This repository is supposed to be cloned and modified in order to bootstrap it's structure and quickly have your very own RESTful service up and running, without much need to worry about the initial folder structure or application setup. In order to keep things clean, organized and scalable, I'd reccommend you to understand and keep it's folder structure, but <b>it's up to you to decide what works better for you and your application</b>.
 In order to run it, you may use the following npm commands:
-```
+```javascript
 npm install
 npm start
 ```
@@ -55,12 +55,12 @@ Modules containing controllers for your resources, such as user.getAll or post.u
 ### /src/errors
 Modules containing functions that return Error objects, which should contain a message and a HTTP status, and optionally an exception and a redirect. The handleError middleware sents the response status to the error's status and sends it's data and redirect. In order to throw one of this errors, you can make a call as it follows from inside any middleware:
 
-```
+```javascript
 next(routeNotFoundError());
 ```
 
 Every file in this folder is autoloaded by src/errors/index.js, so that you may use it like this:
-```
+```javascript
 require('../errors'); //The errors folder path
 ...
 //The function exported by userNotFound.js is set as userNotFound() in the errors object.
@@ -74,7 +74,7 @@ Modules exporting middleware functions to be added to the expressjs request pipe
 Modules containing the definition of the Sequelize Models. This modules should export functions which take (sequelize : Sequelize,DataTypes) as arguments and return a Sequelize Model. You may set this model's associate attribute as a function that takes an object containig the database's models as an argument to define the model's associations.
 
 Example:
-```
+```javascript
 module.exports = (sequelize, DataTypes) => {
     //Definition
     const Post = sequelize.define('Post',{
@@ -106,7 +106,7 @@ module.exports = (sequelize, DataTypes) => {
 You should require the models folder as an object for your database. This object will contain a sequelize instance and your models, as index.js takes care of autoloading all of them.
 
 Example:
-```
+```javascript
 const db = require('../models');
 ...
 const posts = db.Post;
@@ -116,7 +116,7 @@ const allPosts = await posts.findAll();
 When necessary, you may access your sequelize instance at db.models.
 
 Example:
-```
+```javascript
 const db = require('../models');
 db.sequelize.sync();
 ```
@@ -126,7 +126,7 @@ Modules defining your API routes and defining each route's associated controller
 It is recommended that a router may contain exclusively routes associated to one resource only, using only this resource's controllers.
 
 Example (users.js):
-```
+```javascript
 const express = require('express');
 const router = express.Router();
 const controllers = require('../controllers/users');
@@ -150,7 +150,7 @@ module.exports = router;
 
 All of the routers are autoloaded by a router defined on index.js, so that you may use it like this:
 
-```
+```javascript
 const express = require('express');
 const routes = require('./routes');
 
